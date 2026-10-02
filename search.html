@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Items</title>
+    <link rel="stylesheet" herf="style.css">
+</head>
+
+<body>
+    <h1>Search Lost & Found Items</h1>
+
+    <p>Search for an item that has been lost or found.</p>
+
+    <label>Search Item:</label><br>
+    <input type="text" id="searchBox" placeholder="Example: Mobile Phone">
+
+    <br><br>
+
+    <button type="button" onclick="searchItem()">Search</button>
+
+    <br><br>
+
+    <div id="results">
+    <p>No items available yet.</p>
+</div>
+
+    <br>
+
+    <a href="index.html">Back to Home</a>
+    <script>
+function searchItem() {
+    let item = document.getElementById("searchBox").value;
+
+    if (item === "") {
+        alert("Please enter an item name.");
+        return;
+    }
+
+    document.getElementById("results").innerHTML =
+        "<h2>Search Result</h2>" +
+        "<p>You searched for: <b>" + item + "</b></p>" +
+        "<p>No matching items found yet.</p>";
+}
+</script>
+</body>
+</html>

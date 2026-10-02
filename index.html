@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lost and Found</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f6ff;
+            margin: 0;
+        }
+
+        h1 {
+            background-color: #1565c0;
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+
+        p {
+            font-size: 18px;
+            margin-top: 30px;
+        }
+
+        button {
+            background-color: #1565c0;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0d47a1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Lost and Found</h1>
+    <p>Find what you lost. Report what you found.</p>
+
+    <p>Welcome to our College Lost and Found</p>
+    <br>
+
+<input type="text" placeholder="Search Lost or Found Item"
+style="padding:12px; width:300px; border-radius:5px;
+background-color:#1565c0; color:white; border:none;">
+<button onclick="searchItem()">Search</button>
+<br><br>
+
+<button onclick="viewItems()">View Reported Items</button>
+
+<div id="items" style="margin-top:20px; padding:15px;"></div>
+
+<style>
+input::placeholder {
+    color: white;
+    opacity: 1;
+}
+</style>
+
+    <button onclick="location.href='lost.html'">
+        Report Lost Item
+    </button>
+
+    <button onclick="location.href='found.html'">
+        Report Found Item
+    </button>
+    <hr>
+
+<h2>About Lost and Found</h2>
+
+<p>
+This website helps students report lost items and found items
+inside the college campus.
+</p>
+<h2>Contact</h2>
+
+<p>
+For any help, contact the college Lost and Found team.
+</p>
+
+<p>
+📞 Contact: College Office
+</p>
+<script>
+function searchItem() {
+    let item = document.querySelector("input").value.toLowerCase();
+
+    let lostItem = localStorage.getItem("lostItem");
+    let foundItem = localStorage.getItem("foundItem");
+
+    if (item === "") {
+        alert("Please enter an item to search");
+        return;
+    }
+
+    if (lostItem && lostItem.toLowerCase().includes(item)) {
+        alert("Lost Item Found: " + lostItem);
+    }
+    else if (foundItem && foundItem.toLowerCase().includes(item)) {
+        alert("Found Item Found: " + foundItem);
+    }
+    else {
+        alert("No matching item found");
+    }
+}
+function viewItems() {
+    let lostItem = localStorage.getItem("lostItem");
+    let foundItem = localStorage.getItem("foundItem");
+
+    let result = "";
+
+    if (lostItem) {
+        result += "<p><b>Lost Item:</b> " + lostItem + "</p>";
+    }
+
+    if (foundItem) {
+        result += "<p><b>Found Item:</b> " + foundItem + "</p>";
+    }
+
+    if (result === "") {
+        result = "<p>No items reported yet.</p>";
+    }
+
+    document.getElementById("items").innerHTML = result;
+}
+</script>
+<footer>
+    <p>© 2026 College Lost and Found | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

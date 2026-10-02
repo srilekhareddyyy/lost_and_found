@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report Found Item</title>
+    <link rel="stylesheet" herf="style.css">
+</head>
+
+<body>
+    <h1>Report Found Item</h1>
+
+    <form>
+        <label>Item Name:</label><br>
+        <input type="text" placeholder="Enter item name">
+        <br><br>
+
+        <label>Found Location:</label><br>
+        <input type="text" placeholder="Where did you find it?">
+        <br><br>
+
+        <label>Date Found:</label><br>
+        <input type="date">
+        <br><br>
+
+        <label>Description:</label><br>
+        <textarea placeholder="Describe the item"></textarea>
+        <br><br>
+
+        <label>Your Name:</label><br>
+        <input type="text" placeholder="Enter your name">
+        <br><br>
+
+        <label>Contact Number:</label><br>
+        <input type="tel" placeholder="Enter phone number">
+        <br><br>
+
+        <button type="button" onclick="submitFoundItem()">Submit Found Item</button>
+
+    <br>
+
+    <a href="index.html">Back to Home</a>
+    <script>
+function submitFoundItem() {
+    let itemName = document.querySelector('input[placeholder="Enter item name"]').value;
+
+    if (itemName === "") {
+        alert("Please enter the item name");
+        return;
+    }
+
+    localStorage.setItem("foundItem", itemName);
+
+    alert("Found item reported successfully!");
+}
+</script>
+</body>
+</html>

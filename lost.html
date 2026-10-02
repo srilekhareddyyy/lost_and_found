@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report Lost Item</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+
+<body>
+    <h1>Report Lost Item</h1>
+
+    <form>
+        <label>Item Name:</label><br>
+        <input type="text" placeholder="Enter item name">
+        <br><br>
+
+        <label>Description:</label><br>
+        <textarea placeholder="Describe the item"></textarea>
+        <br><br>
+
+        <label>Location Lost:</label><br>
+        <input type="text" placeholder="Enter location">
+        <br><br>
+
+        <label>Date:</label><br>
+        <input type="date">
+        <br><br>
+
+        <label>Contact Number:</label><br>
+        <input type="tel" placeholder="Enter phone number">
+        <br><br>
+
+        <button type="button" onclick="submitLostItem()">Submit Lost Item</button>
+
+    <br>
+</form>
+    <a href="index.html">Back to Home</a>
+    <script>
+function submitLostItem() {
+    let itemName = document.querySelector('input[placeholder="Enter item name"]').value;
+
+    if (itemName === "") {
+        alert("Please enter the item name");
+        return;
+    }
+
+    localStorage.setItem("lostItem", itemName);
+
+    alert("Lost item reported successfully!");
+}
+</script>
+</body>
+</html>
